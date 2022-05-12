@@ -1,0 +1,494 @@
+INTERLIS 2.3;
+
+MODEL Modelo_Obs (es)
+AT "mailto:cardo@localhost"
+VERSION "2022-04-19"  =
+  IMPORTS ISO19107_PLANAS_V3_0,LADM_COL_V3_1;
+
+  TOPIC Ofertas_Inmobiliarias =
+    DEPENDS ON LADM_COL_V3_1.LADM_Nucleo;
+
+    DOMAIN
+
+      LC_CategoriaSueloTipo = (
+        Suburbano,
+        Proteccion
+      );
+
+      LC_ClaseSueloTipo = (
+        Urbano,
+        Rural,
+        EnumElement88
+      );
+
+      LC_CondicionPredioTipo = (
+        PH(
+          Matriz,
+          Unidad_Predial
+        ),
+        NPH,
+        Condominio(
+          Matriz,
+          Unidad_Predial
+        ),
+        Parque_Cementerio(
+          Unidad_Predial
+        ),
+        Via,
+        Informal,
+        Bien_Uso_Publico
+      );
+
+      LC_ConstruccionPlantaTipo = (
+        Piso,
+        Mezanine,
+        Sotano,
+        Semisotano,
+        Subterraneo
+      );
+
+      LC_ConstruccionTipo = (
+        Convencional,
+        No_Convencional
+      );
+
+      LC_DerechoTipo = (
+        Dominio,
+        Ocupacion,
+        Posesion
+      );
+
+      LC_DestinacionEconomicaTipo = (
+        Acuicola,
+        Agricola,
+        Agroindustrial,
+        Agropecuario,
+        Agroforestal,
+        Comercial,
+        Cultural,
+        Educativo,
+        Forestal,
+        Habitacional,
+        Industrial,
+        Infraestructura_Asociada_Produccion_Agropecuaria,
+        Infraestructura_Hidraulica,
+        Infraestructura_Saneamiento_Basico,
+        Infraestructura_Seguridad,
+        Infraestructura_Transporte,
+        Institucional,
+        Mineria_Hidrocarburos,
+        Lote_Urbanizable_No_Urbanizado,
+        Lote_Urbanizado_No_Construido,
+        Lote_No_Urbanizable,
+        Pecuario,
+        Recreacional,
+        Religioso,
+        Salubridad,
+        Servicios_Funerarios,
+        Uso_Publico
+      );
+
+      LC_DominioConstruccionTipo = (
+        Comun,
+        Privado
+      );
+
+      LC_EstratoTipo = (
+        Bajo_Bajo_1,
+        Bajo_2,
+        Medio_Bajo_3,
+        Medio_4,
+        Medio_Alto_5,
+        Alto_6,
+        Otro
+      );
+
+      LC_Oferta_Tipo = (
+        Venta,
+        Arriendo
+      );
+
+      LC_PredioTipo
+      EXTENDS LADM_COL_V3_1.LADM_Nucleo.COL_UnidadAdministrativaBasicaTipo = (
+        Predio(
+          Publico(
+            Baldio,
+            Fiscal,
+            Patrimonial,
+            Uso_Publico,
+            Ejido
+          ),
+          Privado,
+          Territorio_Colectivo,
+          Vacante
+        )
+      );
+
+      LC_RestriccionTipo = (
+        Servidumbre(
+          Transito,
+          Aguas_Negras,
+          Aire,
+          Energia_Electrica,
+          Gasoducto,
+          Luz,
+          Oleoducto,
+          Agua,
+          Minera,
+          Legal_Hidrocarburos,
+          Medianera,
+          Alcantarillado,
+          Acueducto
+        )
+      );
+
+      LC_ResultadoVisitaTipo = (
+        Exitoso,
+        Incompleto,
+        No_Hay_Nadie,
+        No_Permitieron_Acceso,
+        Menor_Edad,
+        Situacion_Orden_Publico,
+        Zona_Dificil_Acceso,
+        Otro
+      );
+
+      LC_TipologiaTipo = (
+        Residencial(
+          Tipo_1A,
+          Tipo_1B,
+          Tipo_2A,
+          Tipo_2B,
+          Tipo_3A,
+          Tipo_3B,
+          Tipo_4A,
+          Tipo_4B,
+          Tipo_5A,
+          Tipo_5B,
+          Tipo_6A,
+          Tipo_6B
+        ),
+        Comercial(
+          Barrial_1,
+          Barrial_2,
+          Sectorial_1,
+          Sectorial_2,
+          Especializado_1,
+          Especializado_2
+        ),
+        Industrial(
+          Liviana_1,
+          Liviana_2,
+          Mediana_1,
+          Mediana_2,
+          Pesada_1,
+          Pesada_2
+        ),
+        Otro
+      );
+
+      LC_UnidadConstruccionTipo = (
+        Residencial,
+        Comercial,
+        Industrial,
+        Institucional,
+        Anexo
+      );
+
+      LC_UsoUConsTipo = (
+        Residencial(
+          Apartamentos_4_y_mas_pisos_en_PH,
+          Apartamentos_En_Edificio_4_y_5_Pisos_Cartagena,
+          Apartamentos_Mas_De_4_Pisos,
+          Barracas,
+          Casa_Elbas,
+          Depositos_Lockers,
+          Garajes_Cubiertos,
+          Garajes_En_PH,
+          Salon_Comunal,
+          Secadero_Ropa,
+          Vivienda_Colonial,
+          Vivienda_Hasta_3_Pisos,
+          Vivienda_Hasta_3_Pisos_En_PH,
+          Vivienda_Recreacional,
+          Vivienda_Recreacional_En_PH
+        ),
+        Comercial(
+          Bodegas_Comerciales_Grandes_Almacenes,
+          Bodegas_Comerciales_en_PH,
+          Centros_Comerciales,
+          Centros_Comerciales_en_PH,
+          Clubes_Casinos,
+          Comercio,
+          Comercio_Colonial,
+          Comercio_en_PH,
+          Hotel_Colonial,
+          Hoteles,
+          Hoteles_en_PH,
+          Oficinas_Consultorios,
+          Oficinas_Consultorios_Coloniales,
+          Oficinas_Consultorios_en_PH,
+          Parque_Diversiones,
+          Parqueaderos,
+          Parqueaderos_en_PH,
+          Pensiones_y_Residencias,
+          Plaza_Mercado,
+          Restaurante_Colonial,
+          Restaurantes,
+          Restaurantes_en_PH,
+          Teatro_Cinemas,
+          Teatro_Cinemas_en_PH
+        ),
+        Industrial(
+          Bodega_Casa_Bomba,
+          Bodegas_Casa_Bomba_en_PH,
+          Industrias,
+          Industrias_en_PH,
+          Talleres
+        ),
+        Institucional(
+          Aulas_de_Clases,
+          Biblioteca,
+          Carceles,
+          Casas_de_Culto,
+          Clinicas_Hospitales_Centros_Medicos,
+          Colegio_y_Universidades,
+          Coliseos,
+          Entidad_Educativa_Colonial_Colegio_Colonial,
+          Estadios,
+          Fuertes_y_Castillos,
+          Iglesia,
+          Iglesia_en_PH,
+          Instalaciones_Militares,
+          Jardin_Infantil_en_Casa,
+          Parque_Cementerio,
+          Planetario,
+          Plaza_de_Toros,
+          Puestos_de_Salud,
+          Museos,
+          Seminarios_Conventos,
+          Teatro,
+          Unidad_Deportiva,
+          Velodromo_Patinodromo
+        ),
+        Anexo(
+          Albercas_Banaderas,
+          Beneficiaderos,
+          Camaroneras,
+          Canchas,
+          Canchas_de_Tenis,
+          Carretera,
+          Cerramiento,
+          Cimientos_Estructura_Muros_y_Placa_Base,
+          Cocheras_Marraneras_Porquerizas,
+          Construccion_en_Membrana_Arquitectonica,
+          Contenedor,
+          Corrales,
+          Establos_Pesebreras_Caballerizas,
+          Estacion_Bombeo,
+          Estacion_Sistema_Transporte,
+          Galpones_Gallineros,
+          Hangar,
+          Kioscos,
+          Lagunas_de_Oxidacion,
+          Marquesinas_Patios_Cubiertos,
+          Muelles,
+          Murallas,
+          Pergolas,
+          Piscinas,
+          Pista_Aeropuerto,
+          Pozos,
+          Ramadas_Cobertizos_Caneyes,
+          Secaderos,
+          Silos,
+          Tanques,
+          Toboganes,
+          Torre_de_Control,
+          Torres_de_Enfriamiento,
+          Unidad_Predial_por_Construir,
+          Via_Ferrea
+        )
+      );
+
+    CLASS LC_CalificacionUnidadConstruccion (ABSTRACT) =
+    END LC_CalificacionUnidadConstruccion;
+
+    CLASS LC_ContactoVisita =
+      Primer_Nombre_Quien_Atendio : MANDATORY TEXT*100;
+      Segundo_Nombre_Quien_Atendio : TEXT*100;
+      Primer_Apellido_Quien_Atendio : MANDATORY TEXT*100;
+      Segundo_Apellido_Quien_Atendio : TEXT*100;
+      Celular : TEXT*20;
+      Correo_Electronico : TEXT*100;
+    END LC_ContactoVisita;
+
+    CLASS LC_DatosPHCondominio =
+      Area_Total_Terreno : 0.00 .. 99999999999999.98 [LADM_COL_V3_1.m2];
+      Area_Total_Terreno_Privada : 0.00 .. 99999999999999.98;
+      Area_Total_Terreno_Comun : 0.00 .. 99999999999999.98;
+      Area_Total_Construida : 0.00 .. 99999999999999.98;
+      Area_Total_Construida_Privada : 0.00 .. 99999999999999.98;
+      Area_Total_Construida_Comun : 0.00 .. 99999999999999.98;
+      Numero_Torres : 0 .. 1000;
+      Total_Unidades_Privadas : 0 .. 99999999;
+    END LC_DatosPHCondominio;
+
+    CLASS LC_PredioCopropiedad =
+      Coeficiente : 0.000 .. 1.000;
+    END LC_PredioCopropiedad;
+
+    CLASS LC_Terreno
+    EXTENDS LADM_COL_V3_1.LADM_Nucleo.COL_UnidadEspacial =
+      Area_Terreno : MANDATORY 0.0 .. 99999999999999.9 [LADM_COL_V3_1.m2];
+      Avaluo_Terreno : LADM_COL_V3_1.LADM_Nucleo.Peso;
+      Manzana_Vereda_Codigo : TEXT*17;
+      Geometria (EXTENDED) : MANDATORY ISO19107_PLANAS_V3_0.GM_MultiCurve3D;
+    END LC_Terreno;
+
+    CLASS LC_UnidadConstruccion
+    EXTENDS LADM_COL_V3_1.LADM_Nucleo.COL_UnidadEspacial =
+      Planta_Ubicacion : MANDATORY 0 .. 300;
+      Area_Construida : MANDATORY 0.0 .. 99999999999999.9 [LADM_COL_V3_1.m2];
+      Altura : 1 .. 1000 [INTERLIS.m];
+      Geometria (EXTENDED) : ISO19107_PLANAS_V3_0.GM_MultiSurface3D;
+    END LC_UnidadConstruccion;
+
+    CLASS LC_CaracteristicasUnidadConstruccion
+    EXTENDS LADM_COL_V3_1.LADM_Nucleo.ObjetoVersionado =
+      Identificador : MANDATORY TEXT*20;
+      Tipo_Construccion : LC_ConstruccionTipo;
+      Tipo_Dominio : LC_DominioConstruccionTipo;
+      Tipo_Unidad_Construccion : MANDATORY LC_UnidadConstruccionTipo;
+      Tipo_Planta : MANDATORY LC_ConstruccionPlantaTipo;
+      Total_Habitaciones : 0 .. 999999;
+      Total_Banios : 0 .. 999999;
+      Total_Locales : 0 .. 999999;
+      Total_Plantas : 0 .. 150;
+      Uso : LC_UsoUConsTipo;
+      Anio_Construccion : 1512 .. 2500;
+      Avaluo_Unidad_Construccion : LADM_COL_V3_1.LADM_Nucleo.Peso;
+      Area_Construida : MANDATORY 0.0 .. 99999999999999.9 [LADM_COL_V3_1.m2];
+      Area_Privada_Construida : 0.0 .. 99999999999999.9 [LADM_COL_V3_1.m2];
+      Observaciones : TEXT*500;
+    END LC_CaracteristicasUnidadConstruccion;
+
+    CLASS LC_Construcion
+    EXTENDS LADM_COL_V3_1.LADM_Nucleo.COL_UnidadEspacial =
+      Identificador : MANDATORY TEXT*20;
+      Tipo_Construccion : LC_ConstruccionTipo;
+      Tipo_Dominio : LC_DominioConstruccionTipo;
+      Numero_Pisos : MANDATORY 0 .. 300;
+      Numero_Sotanos : 0 .. 99;
+      Numero_Mezanines : 0 .. 99;
+      Numero_Semisotanos : 0 .. 99;
+      Anio_Construccion : 1550 .. 2500;
+      Avaluo_Construccion : LADM_COL_V3_1.LADM_Nucleo.Peso;
+      Valor_Referencia_Construccion : LADM_COL_V3_1.LADM_Nucleo.Peso;
+      Area_Construccion : MANDATORY 0.0 .. 99999999999999.9 [LADM_COL_V3_1.m2];
+      Altura : 0.00 .. 1000.00 [INTERLIS.m];
+      Observaciones : TEXT*500;
+      Geometria (EXTENDED) : ISO19107_PLANAS_V3_0.GM_MultiSurface3D;
+    END LC_Construcion;
+
+    CLASS LC_DatosAdicionalesLevantamientoCatastral =
+      Tiene_Area_Registral : MANDATORY BOOLEAN;
+      Area_Registral_M2 : 0.00 .. 10000000000000000000000.00;
+      Observaciones : TEXT*500;
+      Fecha_Visita_Predial : MANDATORY INTERLIS.XMLDate;
+      Resultado_Visita : MANDATORY LC_ResultadoVisitaTipo;
+      Otro_Cual_Resultado_Visita : TEXT*255;
+      Despojo_Abandono : MANDATORY BOOLEAN;
+      Estrato : LC_EstratoTipo;
+      Otro_Cual_Estrato : TEXT*255;
+      Novedad_Numeros_Prediales : TEXT*20;
+      Novedad_FMI : TEXT*20;
+    END LC_DatosAdicionalesLevantamientoCatastral;
+
+    CLASS LC_Derecho
+    EXTENDS LADM_COL_V3_1.LADM_Nucleo.COL_DRR =
+      Tipo : MANDATORY LC_DerechoTipo;
+      Fraccion_derecho : MANDATORY 0.0000000000 .. 1.0000000000;
+      Fecha_Inicio_Tenencia : INTERLIS.XMLDate;
+    END LC_Derecho;
+
+    CLASS LC_OfertasMercadoInmobiliario =
+      Tipo_Oferta : MANDATORY LC_Oferta_Tipo;
+      Valor_Pedido : MANDATORY LADM_COL_V3_1.LADM_Nucleo.Peso;
+      Valor_Negociado : MANDATORY LADM_COL_V3_1.LADM_Nucleo.Peso;
+      Fecha_Captura_Oferta : MANDATORY INTERLIS.XMLDate;
+      Tiempo_Oferta_Mercado : 0 .. 1000;
+      Numero_Contacto_Oferente : MANDATORY TEXT*20;
+      Nombre_Oferente : MANDATORY TEXT*255;
+    END LC_OfertasMercadoInmobiliario;
+
+    CLASS LC_Predio
+    EXTENDS LADM_COL_V3_1.LADM_Nucleo.COL_UnidadAdministrativaBasica =
+      Departamento : MANDATORY TEXT*2;
+      Municipio : MANDATORY TEXT*3;
+      Id_Operacion : MANDATORY TEXT*30;
+      Tiene_FMI : MANDATORY BOOLEAN;
+      Codigo_ORIP : TEXT*3;
+      Matricula_Inmobiliaria : TEXT*80;
+      Numero_Predial : TEXT*30;
+      Numero_Predial_Anterior : TEXT*20;
+      Codigo_Homologado : TEXT*11;
+      Codigo_Homologado_FMI : MANDATORY BOOLEAN;
+      NUPRE : TEXT*11;
+      Avaluo_Catastral : LADM_COL_V3_1.LADM_Nucleo.Peso;
+      Tipo (EXTENDED) : MANDATORY LC_PredioTipo;
+      Condicion_Predio : MANDATORY LC_CondicionPredioTipo;
+      Direccion : BAG {1..*} OF LADM_COL_V3_1.LADM_Nucleo.ExtDireccion;
+      Destinacion_Economica : MANDATORY LC_DestinacionEconomicaTipo;
+      Clase_Suelo : MANDATORY LC_ClaseSueloTipo;
+      Categoria_Suelo : LC_CategoriaSueloTipo;
+    END LC_Predio;
+
+    CLASS LC_Restriccion
+    EXTENDS LADM_COL_V3_1.LADM_Nucleo.COL_DRR =
+      Tipo : LC_RestriccionTipo;
+    END LC_Restriccion;
+
+    CLASS LC_TipologiaConstruccion
+    EXTENDS LC_CalificacionUnidadConstruccion =
+      Tipo_Tipologia : MANDATORY LC_TipologiaTipo;
+      Cual : TEXT*255;
+    END LC_TipologiaConstruccion;
+
+    ASSOCIATION lc_calificacion_unidadconstruccion =
+      lc_unidad_construccion (EXTERNAL) -- {1} LC_CaracteristicasUnidadConstruccion;
+      lc_calificacion_unidad_construccion -- {0..1} LC_CalificacionUnidadConstruccion;
+    END lc_calificacion_unidadconstruccion;
+
+    ASSOCIATION lc_construccion_unidadconstruccion =
+      lc_unidadconstruccion -- {0..*} LC_UnidadConstruccion;
+      lc_construccion -<> {1} LC_Construcion;
+    END lc_construccion_unidadconstruccion;
+
+    ASSOCIATION lc_informacion_adicional_contacto =
+      lc_contacto_visita -- {0..*} LC_ContactoVisita;
+      lc_datos_adicionales -- {1} LC_DatosAdicionalesLevantamientoCatastral;
+    END lc_informacion_adicional_contacto;
+
+    ASSOCIATION lc_informacion_adicional_predio =
+      lc_predio (EXTERNAL) -- {1} LC_Predio;
+      lc_datos_adicionales -- {0..1} LC_DatosAdicionalesLevantamientoCatastral;
+    END lc_informacion_adicional_predio;
+
+    ASSOCIATION lc_ph_predio =
+      lc_predio -- {1} LC_Predio;
+      lc_datos_ph -- {0..1} LC_DatosPHCondominio;
+    END lc_ph_predio;
+
+    ASSOCIATION lc_predio_ofertas_mercado_inmobiliario =
+      lc_predio -- {0..1} LC_Predio;
+      lc_ofertas_mercado_inmobiliario -- {0..*} LC_OfertasMercadoInmobiliario;
+    END lc_predio_ofertas_mercado_inmobiliario;
+
+    ASSOCIATION lc_unidadconstruccion_caracteristicasunidadconstruccion =
+      lc_caracteristicasunidadconstruccion -- {1} LC_CaracteristicasUnidadConstruccion;
+      lc_unidadconsutruccion -- {1..*} LC_UnidadConstruccion;
+    END lc_unidadconstruccion_caracteristicasunidadconstruccion;
+
+  END Ofertas_Inmobiliarias;
+
+END Modelo_Obs.
