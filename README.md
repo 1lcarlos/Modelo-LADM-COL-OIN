@@ -1,0 +1,12 @@
+# MODELO LADM COL ADAPTADO AL OBSERVATORIO INMOBILIARIO NACIONAL DANE
+
+------------
+
+
+Como resultado del trabajo interinstitucional desarrollado en el marco del apoyo técnico de la Cooperación Suiza a través del proyecto "Modernización de la Administración de tierras en Colombia", se consolidó el modelo LADM_COL. Modelo único, que, mediante la definición de una semántica estándar de datos, facilita la interoperabilidad entre los sistemas de información de las instituciones que producen o administran información de tierras en el país. El modelo LADM_COL está compuesto por el modelo núcleo, que corresponde a la adaptación de la norma ISO19152:2012 a Colombia, y los modelos Catastro-Registro núcleo (de intercambio), cartografía de referencia, ficha predial, diagnóstico jurídico y avalúos
+
+El Instituto Geográfico Agustín Codazzi (IGAC), el Departamento Nacional de Planeación (DNP) y la Superintendencia de Notariado y Registro (SNR), de conformidad con lo dispuesto en el CONPES, deben adelantar el diseño de un repositorio maestro de datos que, junto con la adopción del estándar LADM_COL, que permita la integración catastro-registro y la interoperabilidad de este con otros sistemas de información, así como el fortalecimiento tecnológico de las entidades para estas actividades
+
+Teniendo en cuenta lo anterior y con el fin de conservar esa interoperabilidadad entre los sitemas de información, el Observatorio Inmobiliario Nacional DANE decide adaptar el modelo LADM_COL  a las necesinades del Observario, tomando como punto de partida el Modelo de Aplicación de Levantamiento Catastral junto con su submodelo de cartografia.
+
+El Modelo de Aplicación de Levantamiento Catastral del Modelo LADM_COL define la semántica y estructura de datos para la información de los componentes físico, jurídico y económico de los procesos de formación o actualización catastral con enfoque multipropósito. En este sentido, el modelo de aplicación define las variables que deben capturarse por los gestores u operadores en la ejecución de los procesos catastrales y el  Submodelo de Cartografía Catastral  incluye los elementos geográficos de la división político-administrativa de las entidades territoriales y la sectorización catastral a nivel municipal definida por el gestor catastral. 
